@@ -6,9 +6,9 @@ def main():
     st.title("🔎 Verificador de BND")
 
     st.header("1. Upload dos arquivos")
-    uploaded_peps = st.file_uploader("Arquivo de PEPs", type=["csv", "xlsx"])
-    uploaded_bsns = st.file_uploader("Arquivo de BSNs/Demands", type=["csv", "xlsx"])
-    uploaded_terceiro = st.file_uploader("Arquivo Terceiro", type=["csv", "xlsx"])
+    uploaded_peps = st.file_uploader("Arquivo de Verificação", type=["csv", "xlsx"])
+    uploaded_bsns = st.file_uploader("Arquivo de PEPs/BSNs", type=["csv", "xlsx"])
+    uploaded_terceiro = st.file_uploader("Arquivo de ICT LEVEL", type=["csv", "xlsx"])
 
     # Só processar após os arquivos serem carregados
     if uploaded_peps and uploaded_bsns and uploaded_terceiro:
@@ -34,10 +34,10 @@ def main():
 
         # Configurações de colunas
         st.header("2. Configurações de colunas")
-        coluna_pep_bsn = st.selectbox("Escolha a coluna de PEP no arquivo de BSNs:", bsns_df.columns)
+        coluna_pep_bsn = st.selectbox("Escolha a coluna de PEP no arquivo de PEPs/BSNs (Code):", bsns_df.columns)
         colunas_bnd = st.multiselect("Escolha as colunas para trazer do BSNs:", bsns_df.columns)
-        coluna_chave_terceiro = st.selectbox("Escolha a coluna para cruzar no Terceiro Arquivo:", terceiro_df.columns)
-        colunas_terceiro = st.multiselect("Escolha as colunas para trazer do Terceiro Arquivo:", terceiro_df.columns)
+        coluna_chave_terceiro = st.selectbox("Escolha a coluna para cruzar no Arquivo de ICT LEVEL (Number):", terceiro_df.columns)
+        colunas_terceiro = st.multiselect("Escolha as colunas para trazer do Arquivo de ICT LEVEL:", terceiro_df.columns)
 
         # Adicionando o botão de processamento
         if st.button("🔍 Processar"):
